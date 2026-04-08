@@ -14,6 +14,7 @@ function operate(operator, a, b) {
 let firstNumber , operator, secondNumber,resultado
 let isFirstNumber = true
 let flag = true
+let isTheFinalResult = false
 let result = document.querySelector('.result')
 let buttons = document.querySelectorAll('.displayable')
 console.log(buttons)
@@ -49,6 +50,9 @@ buttons.forEach(button => {
                 result.textContent = resultado
                 firstNumber = resultado
                 secondNumber = undefined
+                isTheFinalResult = true
+                isFirstNumber = true 
+
             //limpar os dados
             }else if (button.value === 'clear'){
                 result.textContent = ''
@@ -58,6 +62,10 @@ buttons.forEach(button => {
                 isFirstNumber = true
             //se for o primeiro numero da operacao
             }else if (isFirstNumber){
+                if (isTheFinalResult){
+                    result.textContent = ''
+                    isTheFinalResult = false
+                }
                 result.textContent += button.value
                 firstNumber = result.textContent
             //lida com o segundo numero
